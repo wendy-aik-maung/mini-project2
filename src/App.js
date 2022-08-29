@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, createContext } from "react";
+import "./App.css";
+import DogCaring from "./components/DogCaring";
+import Town from "./components/Town";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+export const AppContext = createContext();
 
+const App = () => {
+	const CounterProvider = (props) => {
+		const [counter1, setCounter1] = useState(50);
+		const [counter2, setCounter2] = useState(0);
+		const [reset, setReset] = useState(true);
+
+		return (
+			<AppContext.Provider
+				value={{
+					counter1,
+					setCounter1,
+					counter2,
+					setCounter2,
+					reset,
+					setReset,
+				}}>
+				{" "}
+				{props.children}
+			</AppContext.Provider>
+		);
+	};
+
+	return (
+		<CounterProvider>
+			<DogCaring />
+		</CounterProvider>
+	);
+};
 export default App;
