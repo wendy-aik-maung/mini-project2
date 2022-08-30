@@ -5,13 +5,13 @@ import { css } from "@emotion/react";
 import DogCaring from "./DogCaring";
 const Town = () => {
 	const [button, setButton] = useState("");
-	const { counter1, setCounter1 } = useContext(AppContext);
-	const click = () => {
-		console.log("Yes");
-	};
+	const { counter1, counter2, setCounter1, setCounter2 } =
+		useContext(AppContext);
+
 	const handleClick = (e) => {
 		e.preventDefault();
 		setCounter1(counter1 - 1);
+		setCounter2(counter2 + 1);
 	};
 	return (
 		<>
@@ -24,17 +24,13 @@ const Town = () => {
 						<p css={styles.text}>Dog Food Shop</p>
 						<br />
 						<div>
-							<button
-								css={styles.display}
-								onClick={click ? (e) => handleClick(e) : null}>
+							<button css={styles.display} onClick={(e) => handleClick(e)}>
 								Dry Food
 							</button>{" "}
 							<span> * {counter1}</span>
 						</div>
 						<div>
-							<button
-								css={styles.display}
-								onClick={click ? (e) => handleClick(e) : null}>
+							<button css={styles.display} onClick={(e) => handleClick(e)}>
 								{" "}
 								Canned Food{" "}
 							</button>{" "}
@@ -59,19 +55,19 @@ const Town = () => {
 						<p css={styles.text}>Dog Toys Shop </p>
 						<br />
 						<div>
-							<button css={styles.display} onClick={handleClick}>
+							<button css={styles.display} onClick={(e) => handleClick(e)}>
 								Rubber Bone{" "}
 							</button>{" "}
 							<span> * {counter1}</span>
 						</div>
 						<div>
-							<button css={styles.display} onClick={handleClick}>
+							<button css={styles.display} onClick={(e) => handleClick(e)}>
 								Dog Treats Dispensr
 							</button>{" "}
 							<span> * {counter1}</span>
 						</div>
 						<div>
-							<button css={styles.display} onClick={handleClick}>
+							<button css={styles.display} onClick={(e) => handleClick(e)}>
 								Tennis Ball
 							</button>{" "}
 							<span> * {counter1}</span>
