@@ -8,6 +8,11 @@ const Town = () => {
 	const { counter1, counter2, setCounter1, setCounter2 } =
 		useContext(AppContext);
 
+	const handleReset = () => {
+		setCounter1(50);
+		setCounter2(0);
+	};
+
 	const handleClick = (e) => {
 		e.preventDefault();
 		setCounter1(counter1 - 1);
@@ -86,7 +91,7 @@ const Town = () => {
 						</button>
 						<button
 							css={[styles.btn, { marginRight: 40 }]}
-							onClick={() => setCounter1(50)}>
+							onClick={handleReset}>
 							Reset App
 						</button>
 					</footer>

@@ -6,7 +6,11 @@ import Town from "./Town";
 
 const DogCaring = () => {
 	const [btn, setBtn] = useState("");
-	const { counter2, setCounter2 } = React.useContext(AppContext);
+	const { setCounter1, counter2, setCounter2 } = React.useContext(AppContext);
+	const handleReset = () => {
+		setCounter1(50);
+		setCounter2(0);
+	};
 	// const [redirect, setRedirect] = useState(false);
 	return (
 		<>
@@ -63,7 +67,7 @@ const DogCaring = () => {
 						</button>
 						<button
 							css={[styles.btn, { marginRight: 40 }]}
-							onClick={() => setCounter2(0)}>
+							onClick={handleReset}>
 							Reset App
 						</button>
 					</footer>

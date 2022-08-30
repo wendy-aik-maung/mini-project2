@@ -9,7 +9,6 @@ const App = () => {
 	const CounterProvider = (props) => {
 		const [counter1, setCounter1] = useState(50);
 		const [counter2, setCounter2] = useState(0);
-		const [reset, setReset] = useState(true);
 
 		return (
 			<AppContext.Provider
@@ -18,8 +17,6 @@ const App = () => {
 					setCounter1,
 					counter2,
 					setCounter2,
-					reset,
-					setReset,
 				}}>
 				{" "}
 				{props.children}
