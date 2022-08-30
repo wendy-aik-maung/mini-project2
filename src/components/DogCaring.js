@@ -1,12 +1,12 @@
 /** @jsxImportSource @emotion/react */
-import React, { useState } from "react";
+import React from "react";
 import { css } from "@emotion/react";
 import { AppContext } from "../App";
 import Town from "./Town";
 
 const DogCaring = () => {
-	const [btn, setBtn] = useState("");
-	const { setCounter1, counter2, setCounter2 } = React.useContext(AppContext);
+	const { setCounter1, setCounter2, counter2, btn, setBtn } =
+		React.useContext(AppContext);
 	const handleReset = () => {
 		setCounter1(50);
 		setCounter2(0);

@@ -1,11 +1,10 @@
 /** @jsxImportSource @emotion/react */
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { AppContext } from "../App";
 import { css } from "@emotion/react";
 import DogCaring from "./DogCaring";
 const Town = () => {
-	const [button, setButton] = useState("");
-	const { counter1, counter2, setCounter1, setCounter2 } =
+	const { counter1, counter2, setCounter1, setCounter2, btn, setBtn } =
 		useContext(AppContext);
 
 	const handleReset = () => {
@@ -20,7 +19,7 @@ const Town = () => {
 	};
 	return (
 		<>
-			{button === "DogCaring" ? (
+			{btn === "DogCaring" ? (
 				<DogCaring />
 			) : (
 				<div>
@@ -81,12 +80,12 @@ const Town = () => {
 					<footer css={styles.footer}>
 						<button
 							css={[styles.btn, { marginRight: 40 }]}
-							onClick={() => setButton("")}>
+							onClick={() => setBtn("")}>
 							Go To Town
 						</button>
 						<button
 							css={[styles.btn, { marginRight: 40 }]}
-							onClick={() => setButton("DogCaring")}>
+							onClick={() => setBtn("DogCaring")}>
 							Go To Home
 						</button>
 						<button
