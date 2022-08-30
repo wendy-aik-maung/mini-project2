@@ -1,35 +1,66 @@
-import React, { useState, createContext } from "react";
+import { useState, createContext } from "react";
 import "./App.css";
-import DogCaring from "./components/DogCaring";
+import Footer from "./components/Footer";
+import Page from "./pages/Page";
 
 export const AppContext = createContext();
 
 const App = () => {
-	const CounterProvider = (props) => {
-		const [counter1, setCounter1] = useState(50);
-		const [counter2, setCounter2] = useState(0);
-		const [btn, setBtn] = useState("");
+  const CounterProvider = (props) => {
+    const defaultTownCounts = 50;
+    const defaultHomeCounts = 0;
 
-		return (
-			<AppContext.Provider
-				value={{
-					counter1,
-					setCounter1,
-					counter2,
-					setCounter2,
-					btn,
-					setBtn,
-				}}>
-				{" "}
-				{props.children}
-			</AppContext.Provider>
-		);
-	};
+    const [btn, setBtn] = useState("Town");
 
-	return (
-		<CounterProvider>
-			<DogCaring />
-		</CounterProvider>
-	);
+    const [townData, setTownData] = useState({
+      food: {
+        dry: defaultTownCounts,
+        canned: defaultTownCounts,
+        wet: defaultTownCounts,
+        meat: defaultTownCounts,
+      },
+      toys: {
+        bone: defaultTownCounts,
+        dispenser: defaultTownCounts,
+        ball: defaultTownCounts,
+      },
+    });
+    const [homeData, setHomeData] = useState({
+      food: {
+        dry: defaultHomeCounts,
+        canned: defaultHomeCounts,
+        wet: defaultHomeCounts,
+        meat: defaultHomeCounts,
+      },
+      toys: {
+        bone: defaultHomeCounts,
+        dispenser: defaultHomeCounts,
+        ball: defaultHomeCounts,
+      },
+    });
+
+    return (
+      <AppContext.Provider
+        value={{
+          homeData,
+          setHomeData,
+          townData,
+          setTownData,
+          btn,
+          setBtn,
+        }}
+      >
+        {" "}
+        {props.children}
+      </AppContext.Provider>
+    );
+  };
+
+  return (
+    <CounterProvider>
+      <Page />
+      <Footer />
+    </CounterProvider>
+  );
 };
 export default App;
